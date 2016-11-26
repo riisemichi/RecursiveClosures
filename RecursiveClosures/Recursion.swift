@@ -37,8 +37,6 @@ public class Recursion<T, R> {
      - parameter function: The function as closure, that should be made recursive.
      - parameter parameter: The parameter of the function.
      - parameter f: The recursive representation of the function. Call this for the recursive call. The function itself will be called if you call this in the closure. `f(n-1)`.
-     
-     
      */
     public init(with function: @escaping (_ parameter: T, _ f: (T)->R)-> R) {
         self.f = function

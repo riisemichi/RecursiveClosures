@@ -20,6 +20,18 @@ let fib : (Int) -> Int = { n in
 ```
 In Swift 3.0 this produces the following error: ```error: variable used within its own initial value```
 
+The following would work, but you have to store the closure as implicitly unwrapped var.
+
+```
+var bla : ((Int) -> Int)!
+bla = {(n) in
+    n <= 2 ? 1 : bla(n-1) + bla(n-2)
+}
+
+bla(5)
+```
+
+
 ### With RecursiveClosures you can do the following:
 
 ```swift
@@ -38,8 +50,8 @@ pod 'RecursiveClosures' => git: 'https://github.com/riisemichi/RecursiveClosures
 ### Carthage
 TODO
 
-### Use Class
-You can even simply copy the class Recursion to your Project.
+### Copy Class
+You can simply copy the class [Recursion](https://github.com/riisemichi/RecursiveClosures/blob/master/RecursiveClosures/Recursion.swift) to your Project.
 
 ## Usage
 Recursion is a generic class which takes two Types. One for parameter type, one for return type. Inside the closure you will have a parameter f, which represents the function itself, that can be called recursively.
@@ -95,29 +107,4 @@ If you like it fancy, you can use the Emoji "🌀" instead of "Recursion" (typea
 let fib = 🌀<Int, Int> { (n, f) in
    n <= 2 ? 1 : f(n-1) + f(n-2)
 }.cached.closure
-```
-
-## Licence
-```
-MIT License
-
-Copyright (c) 2016 Michael Zurmühle
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 ```
